@@ -1,0 +1,7 @@
+try:
+    n=int(input("enter a no:"))
+    re=100/n
+except(ValueError,ZeroDivisionError):
+    print("wrong input")
+else:
+    print("Result:",re)

@@ -1,0 +1,5 @@
+class student:
+    def info(self,name,city,number):
+         print("name:",name,"city:",city,"number:",number)
+obj=student()
+obj.info("maaz","mumbai","7715814200")

@@ -1,0 +1,5 @@
+def str_len(input_string):
+    return len(input_string)
+input_string="Donebro"
+length=str_len(input_string)
+print(length)

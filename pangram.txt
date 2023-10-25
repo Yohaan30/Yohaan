@@ -1,0 +1,15 @@
+def isPangram(sentence, alphabet):
+    flag = True
+    for char in alphabet:
+        if char not in sentence.lower():
+            flag = False
+            break  # You should exit the loop once you find a missing character
+
+    if flag:
+        print("The sentence is a pangram")
+    else:
+        print("Not a pangram")
+
+sentence = "the quick brown fox jumps over a lazy dog"
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+isPangram(sentence, alphabet)

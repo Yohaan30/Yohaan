@@ -1,0 +1,13 @@
+class parent1:
+    def f1(self):
+        print("parent11 class")
+        class parent2:
+            def f2(self):
+                print("parent2")
+                class child(parent1,parent2):
+                    def f3(self):
+                        print("child class")
+                        t=child()
+                        t.f1()
+                        t.f2()
+                        t.f3()

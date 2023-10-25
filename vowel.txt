@@ -1,0 +1,7 @@
+def isVowel(ch):
+    if(ch=='a'or ch=='A'):
+        print("the given ch is a vowel",ch)
+    else:
+        print("is not a vowel",ch)
+ch=input("enter a alphabet :")
+isVowel(ch)

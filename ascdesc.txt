@@ -1,0 +1,7 @@
+dict1 = {'a': 1, 'b': 2, 'c': 4, 'd': 3}
+asc = dict(sorted(dict1.items()))
+dsc = dict(sorted(dict1.items(), reverse=True))
+
+print("dict1", dict1)
+print("asc", asc)
+print("dsc", dsc)
