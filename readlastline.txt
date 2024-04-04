@@ -1,4 +1,0 @@
-file=open('read.txt','r')
-text=file.readlines()
-print(text[-1])
-file.close()
