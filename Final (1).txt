@@ -1,0 +1,718 @@
+1>User Defined Exception Handling
+using System;
+
+public class userdefineException : Exception
+{
+    public userdefineException(string message) : base(message) { }
+}
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            Console.Write("Numerator: ");
+            int num = int.Parse(Console.ReadLine());
+
+            Console.Write("Denominator: ");
+            int den = int.Parse(Console.ReadLine());
+
+            if (den == 0)
+                throw new userdefineException("Cannot divide by zero.");
+
+            Console.WriteLine($"Result: {num / den}");
+        }
+        catch (userdefineException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+       finally{
+               Console.WriteLine("Program Executed");    }
+    }
+}
+
+2> Create a simple web page Containing the student details
+Default.aspx>>>>>>>>>>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="StudentDetailsApp._Default" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Student Details</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1>Enter Student Details</h1>
+            <label>Name:</label>
+            <asp:TextBox ID="txtName" runat="server" required></asp:TextBox>
+            <br />
+            <label>Age:</label>
+            <asp:TextBox ID="txtAge" runat="server" required></asp:TextBox>
+            <br />
+            <label>Class:</label>
+            <asp:TextBox ID="txtClass" runat="server" required></asp:TextBox>
+            <br />
+            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+            <br />
+            <asp:Label ID="lblResult" runat="server" Text="" />
+        </div>
+    </form>
+</body>
+</html>
+
+
+Default.aspx.cs>>>>>>>>
+using System;
+
+namespace StudentDetailsApp
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string name = txtName.Text;
+            string age = txtAge.Text;
+            string className = txtClass.Text;
+
+            lblResult.Text = $"Name: {name}, Age: {age}, Class: {className}";
+        }
+    }
+}
+
+
+
+3>Create a simple web page with various server controls
+Default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SimpleAutoPostBack._Default" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>AutoPostBack Example</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1>Select an Option</h1>
+
+            <asp:DropDownList ID="ddlOptions" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlOptions_SelectedIndexChanged">
+                <asp:ListItem Value="1">Option 1</asp:ListItem>
+                <asp:ListItem Value="2">Option 2</asp:ListItem>
+                <asp:ListItem Value="3">Option 3</asp:ListItem>
+            </asp:DropDownList>
+
+            <br /><br />
+
+            <asp:Label ID="lblOutput" runat="server" Text="Selected option will be displayed here." />
+        </div>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs>>
+
+using System;
+
+namespace SimpleAutoPostBack
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+
+        protected void ddlOptions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblOutput.Text = $"You selected: {ddlOptions.SelectedItem.Text}";
+        }
+    }
+}
+
+
+4>Create a simple web page to count the number of items the current webpages is submitted to the server onclick event of a button
+
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ClickCounterApp._Default" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Click Counter</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1>Button Click Counter</h1>
+
+            <asp:Button ID="btnClick" runat="server" Text="Click Me!" OnClick="btnClick_Click" />
+            <br /><br />
+
+            <asp:Label ID="lblCount" runat="server" Text="Button clicked: 0 times"></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+
+namespace ClickCounterApp
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        private static int clickCount = 0;
+
+        protected void btnClick_Click(object sender, EventArgs e)
+        {
+            clickCount++;
+            lblCount.Text = $"Button clicked: {clickCount} times";
+        }
+    }
+}
+
+5> Create simple application
+a>factorial
+
+using System;
+public class FactorialExample
+{
+    public static void Main(string[] args)
+    {
+        int  fact = 1;
+        Console.WriteLine("Enter any Number: ");
+        int number = int.Parse(Console.ReadLine());
+        for (int i = 1; i <= number; i++)
+        {
+            fact = fact * i;
+        }
+        Console.WriteLine("Factorial of " + number + " is: " + fact);
+        Console.WriteLine("\nPress any key to exit...");
+        Console.ReadKey();
+    }
+
+}
+
+b> money convertion
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter amount in INR: ");
+        string input = Console.ReadLine();
+
+        
+        decimal inr = Convert.ToDecimal(input);
+
+        
+        decimal conversionRate = 0.012m;
+        decimal usd = inr * conversionRate;
+
+        Console.WriteLine($"{inr} INR is {usd} USD.");
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+    }
+}
+
+c> Cude of given number
+
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter the number :");
+        int num=int.Parse(Console.ReadLine());
+        int num1 = num * 3;
+        Console.WriteLine("Cude is:" + num1);
+
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+    }
+}
+
+d>Generate Fibonacci series
+using System;
+public class FibonacciExample
+{
+    public static void Main(string[] args)
+    {
+        int n1 = 0, n2 = 1;
+        Console.Write("Enter the number of elements: ");
+        int number = int.Parse(Console.ReadLine());
+        Console.Write(n1 + " " + n2 + " ");     
+        for (int i = 2; i < number; ++i)    
+        {
+            int n3 = n1 + n2;
+            Console.Write(n3 + " ");
+            n1 = n2;
+            n2 = n3;
+        }
+        Console.WriteLine("Press Any Key...");
+        Console.ReadKey();
+    }
+}
+
+
+6> 7> Same of both calender control
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="CalendarDatePropertyApp._Default" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Date Property with Calendar</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1>Select a Date</h1>
+            <asp:Calendar ID="calendar" runat="server" OnSelectionChanged="calendar_SelectionChanged"></asp:Calendar>
+            <br /><br />
+            <asp:Label ID="lblDayOfWeek" runat="server" Text=""></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+
+namespace CalendarDatePropertyApp
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        protected void calendar_SelectionChanged(object sender, EventArgs e)
+        {
+            lblDayOfWeek.Text = $"Day of the Week: {calendar.SelectedDate.DayOfWeek}";
+        }
+    }
+}
+
+8> Create a web page containing the student details by GridView Control
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SimpleStudentApp._Default" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Student Details</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <h1>Student Details</h1>
+        <asp:TextBox ID="txtName" runat="server" placeholder="Name"></asp:TextBox>
+        <asp:TextBox ID="txtAge" runat="server" placeholder="Age"></asp:TextBox>
+        <asp:TextBox ID="txtClass" runat="server" placeholder="Class"></asp:TextBox>
+        <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+            <Columns>
+                <asp:BoundField DataField="Name" HeaderText="Name" />
+                <asp:BoundField DataField="Age" HeaderText="Age" />
+                <asp:BoundField DataField="Class" HeaderText="Class" />
+            </Columns>
+        </asp:GridView>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+
+namespace SimpleStudentApp
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        static List<Student> students = new List<Student>();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+                GridView1.DataSource = students;
+                GridView1.DataBind();
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            students.Add(new Student { Name = txtName.Text, Age = int.Parse(txtAge.Text), Class = txtClass.Text });
+            GridView1.DataSource = students;
+            GridView1.DataBind();
+            txtName.Text = txtAge.Text = txtClass.Text = "";
+        }
+    }
+
+    public class Student
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Class { get; set; }
+    }
+}
+9>Boxing and unboxing
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int number = 42;
+        object boxedNumber = number;
+        Console.WriteLine($"Boxed Number: {boxedNumber}");
+
+        int unboxedNumber = (int)boxedNumber;
+        Console.WriteLine($"Unboxed Number: {unboxedNumber}");
+    }
+}
+
+10>Design an asp.net webpage with 2groups of buttons,dropdownlist,label and textbox
+
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SimpleButtonApp._Default" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <title>Simple Button App</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <h1>Simple Button App</h1>
+        <asp:Label ID="lblMessage" runat="server" />
+        <asp:DropDownList ID="ddlOptions" runat="server">
+            <asp:ListItem Text="Option 1" Value="1" />
+            <asp:ListItem Text="Option 2" Value="2" />
+        </asp:DropDownList>
+        <asp:TextBox ID="txtInput" runat="server" />
+        
+        <div>
+            <asp:Button ID="btn1" runat="server" Text="Button 1" OnClick="Button_Click" />
+            <asp:Button ID="btn2" runat="server" Text="Button 2" OnClick="Button_Click" />
+        </div>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+
+namespace SimpleButtonApp
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        protected void Button_Click(object sender, EventArgs e)
+        {
+            string buttonText = ((System.Web.UI.WebControls.Button)sender).Text;
+            lblMessage.Text = $"{buttonText} clicked! Input: {txtInput.Text}";
+        }
+    }
+}
+
+11>12>Leaving this quetions
+
+13>Dividebyzeroexception and indexoutofrangeexception excepting using textbox and level
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ExceptionHandlingApp._Default" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <title>Exception Handling Example</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <h1>Exception Handling Example</h1>
+        
+        <asp:Label ID="lblResult" runat="server" />
+        <br /><br />
+
+        <h3>Divide By Zero</h3>
+        <asp:TextBox ID="txtNumerator" runat="server" placeholder="Numerator" />
+        <asp:TextBox ID="txtDenominator" runat="server" placeholder="Denominator" />
+        <asp:Button ID="btnDivide" runat="server" Text="Divide" OnClick="btnDivide_Click" />
+        
+        <h3>Index Out of Range</h3>
+        <asp:TextBox ID="txtIndex" runat="server" placeholder="Index (0-2)" />
+        <asp:Button ID="btnAccess" runat="server" Text="Access Array" OnClick="btnAccess_Click" />
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+
+namespace ExceptionHandlingApp
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        protected void btnDivide_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int numerator = int.Parse(txtNumerator.Text);
+                int denominator = int.Parse(txtDenominator.Text);
+                int result = numerator / denominator;
+                lblResult.Text = $"Result: {result}";
+            }
+            catch (DivideByZeroException)
+            {
+                lblResult.Text = "Error: Cannot divide by zero.";
+            }
+                    }
+
+        protected void btnAccess_Click(object sender, EventArgs e)
+        {
+            string[] array = { "Apple", "Banana", "Cherry" };
+
+            try
+            {
+                int index = int.Parse(txtIndex.Text);
+                lblResult.Text = $"Value at index {index}: {array[index]}";
+            }
+            catch (IndexOutOfRangeException)
+            {
+                lblResult.Text = "Error: Index is out of range.";
+            }
+                    }
+    }
+}
+
+
+14>Create a simple web page to show data in tree view control
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SimpleTreeView._Default" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <title>Simple TreeView Example</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <h1>Simple TreeView Example</h1>
+        <asp:TreeView ID="TreeView1" runat="server">
+        </asp:TreeView>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+
+namespace SimpleTreeView
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                TreeNode rootNode = new TreeNode("Root");
+                TreeNode childNode = new TreeNode("Child 1");
+                TreeNode subChildNode = new TreeNode("Sub Child 1");
+
+                childNode.ChildNodes.Add(subChildNode);
+                rootNode.ChildNodes.Add(childNode);
+
+                TreeView1.Nodes.Add(rootNode);
+            }
+        }
+    }
+}
+
+15> Display the no. of visitors on a given web page 
+Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SimpleVisitorCounter._Default" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <title>Visitor Counter</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <h1>Welcome to Our Web Page!</h1>
+        <h2>Number of Visitors: <asp:Label ID="lblVisitorCount" runat="server" /></h2>
+    </form>
+</body>
+</html>
+
+Default.aspx.cs
+using System;
+
+namespace SimpleVisitorCounter
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Application["VisitorCount"] == null)
+            {
+                Application["VisitorCount"] = 0;
+            }
+
+            Application["VisitorCount"] = (int)Application["VisitorCount"] + 1;
+            lblVisitorCount.Text = Application["VisitorCount"].ToString();
+        }
+    }
+}
+
+16>Student Information take and show
+ 
+Default.aspx.cs
+using System;
+
+namespace RegistrationForm
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            lblOutput.Text = "Name: " + txtName.Text + "<br />" +
+                             "Age: " + txtAge.Text + "<br />" +
+                             "Email: " + txtEmail.Text + "<br />" +
+                             "Address: " + txtAddress.Text + "<br />" +
+                             "Mobile: " + txtMobile.Text;
+        }
+    }
+}
+
+Default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="RegistrationForm._Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Registration Form</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Registration Form</h2>
+
+            <asp:Label Text="Name: " runat="server" />
+            <asp:TextBox ID="txtName" runat="server" /><br /><br />
+
+            <asp:Label Text="Age: " runat="server" />
+            <asp:TextBox ID="txtAge" runat="server" /><br /><br />
+
+            <asp:Label Text="Email: " runat="server" />
+            <asp:TextBox ID="txtEmail" runat="server" /><br /><br />
+
+            <asp:Label Text="Address: " runat="server" />
+            <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" Rows="2" /><br /><br />
+
+            <asp:Label Text="Mobile: " runat="server" />
+            <asp:TextBox ID="txtMobile" runat="server" /><br /><br />
+
+            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" /><br /><br />
+
+            <asp:Label ID="lblOutput" runat="server" />
+        </div>
+    </form>
+</body>
+</html>
+
+17>multiple inheritance using interfaces
+using System;
+
+interface IAnimal
+{
+    void Eat();
+}
+
+interface IFlyable
+{
+    void Fly();
+}
+
+class Bird : IAnimal, IFlyable
+{
+    public void Eat()
+    {
+        Console.WriteLine("The bird is eating.");
+    }
+
+    public void Fly()
+    {
+        Console.WriteLine("The bird is flying.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Bird myBird = new Bird();
+        myBird.Eat();
+        myBird.Fly();
+        Console.WriteLine("Press Any key to continue...");
+        Console.ReadKey();
+    }
+}
+
+18> Create a table and add value as you think
+
+Default.aspx.cs
+
+using System;
+using System.Data;
+
+namespace GridViewExample
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // Create a DataTable with sample data
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("Name");
+                dt.Columns.Add("Age");
+
+                dt.Rows.Add("1", "John Doe", "25");
+                dt.Rows.Add("2", "Jane Smith", "30");
+                dt.Rows.Add("3", "Sam Johnson", "22");
+
+                // Bind DataTable to GridView
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+            }
+        }
+    }
+}
+
+
+
+Default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="GridViewExample._Default" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>GridView Example</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>GridView Example</h2>
+            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
