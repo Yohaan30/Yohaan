@@ -1,3 +1,4 @@
+https://docs.google.com/document/d/1jJ0oMID4hvM2pjbeVmkBqW4CLxZhM8TJZ3w93JYfSEk/edit?tab=t.0
 1.	. Develop simple EJB application to demonstrate Servlet Hit count using
 Singleton Session Beans.	
 Java Web-> web application -> Pract7AServletHitsSingltonApp -> finish.
